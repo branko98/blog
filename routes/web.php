@@ -2,6 +2,7 @@
 
 use \App\Http\Controllers\PostsController;
 use \App\Http\Controllers\CommentsController;
+use \App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,8 @@ use \App\Http\Controllers\CommentsController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('posts', function () {
+})->middleware('auth');
 
 Route::get('/posts', ['as' => 'all-posts', 'uses' => 'PostsController@index']);
 
@@ -23,3 +26,13 @@ Route::post('/posts', ['as' => 'store-post', 'uses' => 'PostsController@store'])
 Route::get('/posts/{id}', ['as' => 'single-post', 'uses' => 'PostsController@show']);
 
 Route::post('/posts/{postId}/comments', ['as' => 'comments-post', 'uses' => 'CommentsController@store']);
+
+Route::get('/register', 'RegisterController@create');
+
+Route::post('/register', 'RegisterController@store');
+
+Route::get('/login', 'LoginController@create');
+
+Route::post('/login', 'LoginController@store');
+
+Route::get('/logout', 'LoginController@destroy');

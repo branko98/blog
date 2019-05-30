@@ -5,6 +5,8 @@
 @endsection
 
 @section('content')
+
+    
     <a href="{{ route('create-post') }}" class="btn btn-primary">Create new post</a>
 
     <hr>
